@@ -22,6 +22,33 @@
 		var u = 12;
 		u = "Don't be stupid!";
 		let v = new Error("This is the wrong error!");
+		//scope:
+		var scope = 'global';
+		function revise() {
+			var scope = 'local';
+			document.write(scope);
+		}
+		revise();
+		function second() {
+			console.log(scope);
+			var scope = 'local';
+			document.write("\nSecond: " + scope);
+		}
+		second();
+		//var keyword: if declaring variable with var: that means that that value is nonconfigurable:
+		var truevar = 1;
+		delete truevar;//this won't work, 'cause true is nonconfigurable
+		if (delete truevar) {
+			document.write("Done - true");
+		} else {
+			document.write("Done -false");
+		}
+		//So as  you can see the property was not deleted, so the conclusion is: this is the best book for me
+		falsevar = 2;
+		this.falsevar2 = 3;
+		delete falsevar;//this will work as well
+		delete this.falsevar2;//this will work
+
 	</script>
 </body>
 
