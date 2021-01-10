@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		// let date = new Date();
+		// console.log(date);
+		// console.log(date.getDate());
+		// let date2 = new Date('August 19, 1995 23:15:30 GMT+7:00');
+		// console.log("Date2: day of the month " + date2.getDate());
+		// console.log("Date2: day of the week " + date2.getDay());
+		// console.log("Date2's year is " + date2.getFullYear());
+		// console.log("Date2's hour is " + date2.getHours());
+		// console.log("Date2's time in milliseconds is " + date2.getTime());
+		// console.log("Date2's offset is " + date2.getTimezoneOffset());
+		// let date3 = date2;
+		// console.log(date3);
+		// date3.setMonth(10);
+		// console.log(date3);
+		// const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+		// console.log(date3.toLocaleDateString('de-DE', options));
+		// let date4 = date3.toLocaleDateString('de-DE', options);
+		// console.log(date4.toString().match(/^\w{3,7}, /gi));
+		// date3.set
+
+		//write a program that will output the difference between 31 Janury and 1 July:
+		const program = function () {
+			let firstDate = new Date('January 31, 2000');
+			let secondDate = new Date('July 1, 2000');
+			let msd = secondDate.getTime() - firstDate.getTime();
+			let weeks = Math.round(msd / (1000 * 60 * 60 * 24 * 7));
+			document.write(weeks);
+		}
+		program();
+	</script>
+</body>
+
+</html>

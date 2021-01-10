@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		//boolean examples:
+		function countMonths() {
+			let cont = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+			let values = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+			function mool(arg) {
+				if (cont.includes(arg)) {
+					return arg;
+				}
+				else return;
+			}
+			//proccessing the dates:
+			let firstDate = new Date('August 17, 1980 23:12:14 GMT+4:00');
+			let secondDate = new Date(' January 1, 2004 12:12:12 GMT+1:00');
+			// console.log(firstDate.toString(), secondDate.toString());
+			let firstDateMonth = firstDate.toString().match(/\w{3,10}/g).filter(mool);
+			let firstDateYear = firstDate.toString().match(/\d{4}/g)[0];
+			let secondDateMonth = secondDate.toString().match(/\w{3,10}/g).filter(mool);
+			let secondDateYear = secondDate.toString().match(/\d{4}/g)[0];
+			// console.log(firstDateMonth, secondDateMonth);
+			// let days = 1000 * 60 * 60 * 24;
+			// let difference = Math.round((secondDate.getTime() - firstDate.getTime()) / days);
+			// console.log(difference);
+			let count = 0;
+			let patternStart = firstDateMonth.toString();
+			//main part:
+			for (let i = firstDateYear; i < secondDateYear; i++) {
+				// console.log("Interation");
+				while (patternStart) {
+					let index = cont.indexOf(patternStart);
+					// console.log(secondDateMonth)
+					// console.log(index);
+					if ((i + 1) == secondDateYear && (secondDateMonth == patternStart)) {
+						// console.log(secondDateMonth)
+						// console.log(patternStart)
+						patternStart = false;
+						break;
+					} else {
+						if (index >= 0) {
+							count++;
+							// difference -= values[index];
+						}
+						patternStart = cont[index + 1];
+					}
+				}
+				patternStart = 'Jan';
+			}
+			//counting days:
+			let dayfirst = firstDate.toString().match(/\d{2}/g)[0];
+			let daysecond = secondDate.toString().match(/\d{2}/g)[0];
+			// if ((cont.indexOf(firstDateMonth.toString()) > (cont.indexOf(secondDateMonth.toString())){
+			// 	// console.log(cont.indexOf(firstDateMonth.toString()));
+			// }
+			if (cont.indexOf(firstDateMonth.toString()) > cont.indexOf(secondDateMonth.toString())) {
+				var vomit = Math.abs(dayfirst - daysecond);
+				console.log(`Less by ${vomit} days`)
+				// console.log(firstDateMonth.toString());
+				// console.log(secondDateMonth.toString());
+
+			}
+			else {
+				var vomit = Math.abs(daysecond - dayfirst);
+				console.log(`Less by ${vomit} days`)
+
+			}
+			// console.log(days);
+			console.log(count);
+			// console.log(vomit);
+		}
+
+		countMonths();
+	</script>
+</body>
+
+</html>
