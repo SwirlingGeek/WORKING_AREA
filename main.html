@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		var o1 = Object.create({ x: 1, y: 2 });
+		var o2 = Object.create(Object.prototype);
+		//setting values to an object:
+		o1.title = 'The title of the specified book.';
+		o2['first name'] = 'John';
+		function inherit(p) {
+			if (p == null || p == undefined) throw TypeError();
+			let t = Object.create(p);
+			if (typeof t !== 'null' && typeof t !== 'undefined') {
+				return t;
+			} else {
+				throw new TypeError("Invalid data type");
+
+			}
+
+		}
+		function addblock(portfolio, stockname, shares) {
+			portfolio[stockname] = shares;
+
+		}
+		//deleting values:
+		var a = {
+			name: "John",
+			age: 67,
+			job: "Software developer",
+
+		}
+		delete a["name"];
+		delete a.age;
+		//testing properties:
+		'age' in a;
+		'lol' in a;
+		a.hasOwnProperty('name');
+		a.hasOwnProperty('job');
+	</script>
+</body>
+
+</html>
