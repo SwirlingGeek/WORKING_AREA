@@ -43,6 +43,102 @@
 		'lol' in a;
 		a.hasOwnProperty('name');
 		a.hasOwnProperty('job');
+		//to copy all enumerable properties from one object to another:
+		function copy(a, b) {
+			for (let n in a) {
+				b[n] = a[n];
+			}
+			return b;
+		}//The example above shows how to copy one set of properties to another;
+		//now our task is to merge the objects:
+		function merge(a, b) {
+			for (let property in a) {
+				if (!b.hasOwnProperty(property)) b[property] = a[property];
+			}
+			for (let property in b) {
+				if (!a.hasOwnProperty(property)) a[property] = b[property];
+			}
+		}
+		let obj = {
+			$n: 0,
+			get next() {
+				return this.$n++;
+			},
+			set next(n) {
+				if (n >= $n) {
+					this.$n = n;
+				}
+
+			}
+		}
+		//setters and getters:
+		let object = Object.create({});
+		console.log(object);
+		Object.defineProperty(object, "y", {
+			writable: false
+		});
+		console.log(object.y);
+		Object.defineProperty(object, 'z', {
+			get: function () { return Math.round(Math.random() * 10) }
+		})
+		console.log(object['z']);
+		Object.defineProperty(Object.prototype, 'extend', {
+			writable: true,
+			enumerable: false,
+			configurable: true,
+			value: function (object) {
+				let propertyName = Object.getOwnPropertyNames(object);
+				//loop through those names:
+				for (let i = 0; i < propertyName; i++) {
+					//skip property already in this object:
+					if (propertyName[i] in this) continue;
+					//get property description:
+					let desc = Object.getOwnPropertyDescriptor(object, propertyName[i]);
+					//set the property:
+					Object.defineProperty(this, propertyName[i], desc);
+				}
+			}
+		});
+		//create a sealed object with a frozen prototype, nonenumerable property:
+		var o = Object.seal(Object.create(Object.freeze({ x: 1 }), { y: { writable: true, value: 2 } }));
+		var oo = {};
+		oo[1] = 'one';
+		oo[-1.25] = 'true';
+		console.info(a);
+		console.log(oo);
+		let consta = [1, 2, 3];
+		console.log(consta);
+		Object.defineProperty(consta, 'length', { writable: false });
+		consta.length = 0;
+		console.log(consta);
+		function ap() {
+			//matrix working:
+			let table = new Array(10);//matrix has 10 rows
+			for (let i = 0; i < table.length; i++) {
+				table[i] = new Array(10);//each row has 10 columns
+				for (var row = 0; row < table.length; row++) {
+					for (column = 0; column < table[row].length; column++) {
+						table[row][column] = row * column;
+					}
+				}
+			}
+			let product = table[4][5];
+			console.log(product);
+		}
+
+
+		var table = new Array(10); // 10 rows of the table
+		for (var i = 0; i < table.length; i++)
+			table[i] = new Array(10); // Each row has 10 columns
+		// Initialize the array
+		for (var row = 0; row < table.length; row++) {
+			for (col = 0; col < table[row].length; col++) {
+				table[row][col] = row * col;
+			}
+		}
+		// Use the multidimensional array to compute 5*7
+		var product = table[5][7]; // 35
+		console.log(product);
 	</script>
 </body>
 
