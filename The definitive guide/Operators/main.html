@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<a href="javascript: void window.open()">THis si the href</a>
+	<script>
+		//Operators:
+		//The + operator:
+		const point = { x: 1, y: 1 };
+		console.log("The equality: " + point);
+		const data = [7, 8, 9];
+		console.log("O in data: " + ("0" in data));
+		function convertX(x) {
+			switch (typeof x) {
+				case 'number':
+					return x.toString(16);
+				case 'string':
+					return '"' + x + '"';
+				default:
+					return String(x);
+			}
+		}
+		cracker: for (let y = 0; y < 3; y++) {
+			switch (y) {
+				case 0:
+					console.log(0);
+				case 1:
+					console.log(1);
+					break cracker;
+				case 2:
+					console.log(2);
+			}
+		}
+		//here is the exapmel of an invalid function error handling:
+		function create(x) {
+			if (!x) {
+				throw new Error("Invalid syntax, choose correct answer.");
+			}
+			//the rest of the function:
+			if (x = 1) return 1;
+			return x * create(x - 1);
+		}
+	</script>
+</body>
+
+</html>
